@@ -1707,15 +1707,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Listen for Chatwoot events
   ChatwootBridge.on('contact-changed', handleChatwootContactChanged);
 
-  // Auto-configure Chatwoot on first load (pre-filled credentials)
-  if (!ChatwootAPI.isConfigured()) {
-    ChatwootAPI.saveConfig({
-      baseUrl: 'https://saudedigital-chatwoot.6hqqfw.easypanel.host',
-      accountId: '2',
-      apiToken: 'WY23wVuaKpDJLRw5og7G8A77'
-    });
-    console.log('[CRM] Chatwoot auto-configured with default credentials');
-  }
+  // Auto-configure Chatwoot credentials (always update to ensure correct token)
+  ChatwootAPI.saveConfig({
+    baseUrl: 'https://saudedigital-chatwoot.6hqqfw.easypanel.host',
+    accountId: '2',
+    apiToken: 'QZYoPfb55VNBkrmZdHHB8VBx'
+  });
+  console.log('[CRM] Chatwoot configured with default credentials');
 
   renderPage();
   document.getElementById('modal-overlay').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeModal(); });
