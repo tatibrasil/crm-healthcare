@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRM Healthcare - Dashboard de Gestão de Pacientes">
+  <title>CRM Healthcare — Gestão de Pacientes</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-icon">🏥</div>
+          <div class="logo-text">
+            <span class="logo-title">CRM Health</span>
+            <span class="logo-subtitle">Gestão de Pacientes</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <button class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
+          <span class="nav-icon">📊</span> Dashboard
+        </button>
+        <button class="nav-item" data-page="pipeline" onclick="navigateTo('pipeline')">
+          <span class="nav-icon">🔄</span> Pipeline
+          <span class="nav-badge">2</span>
+        </button>
+        <button class="nav-item" data-page="appointments" onclick="navigateTo('appointments')">
+          <span class="nav-icon">📅</span> Agendamentos
+          <span class="nav-badge">3</span>
+        </button>
+        <button class="nav-item" data-page="patients" onclick="navigateTo('patients')">
+          <span class="nav-icon">👥</span> Pacientes
+        </button>
+        <button class="nav-item" data-page="reports" onclick="navigateTo('reports')">
+          <span class="nav-icon">📈</span> Relatórios
+        </button>
+
+        <div class="nav-section-title">Configurações</div>
+        <button class="nav-item" data-page="doctors" onclick="navigateTo('doctors')">
+          <span class="nav-icon">👨‍⚕️</span> Médicos
+        </button>
+        <button class="nav-item" data-page="services" onclick="navigateTo('services')">
+          <span class="nav-icon">🩺</span> Serviços
+        </button>
+        <button class="nav-item" data-page="availability" onclick="navigateTo('availability')">
+          <span class="nav-icon">📅</span> Disponibilidade
+        </button>
+        <button class="nav-item" data-page="chatwoot-config" onclick="navigateTo('chatwoot-config')">
+          <span class="nav-icon">💬</span> Chatwoot
+          <span id="cw-status-dot" class="cw-status-indicator offline" title="Desconectado"></span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="avatar">AT</div>
+        <div class="user-info">
+          <div class="user-name">Admin</div>
+          <div class="user-role">Administrador</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <h1 id="page-title" class="page-title">Dashboard</h1>
+          <span id="breadcrumb" class="breadcrumb">Home / Visão Geral</span>
+        </div>
+        <div class="header-right">
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Buscar paciente, clínica..." onkeyup="handleGlobalSearch(event)">
+          </div>
+          <button class="header-btn" title="Notificações">
+            🔔
+            <span class="notification-dot"></span>
+          </button>
+          <button class="header-btn" title="WhatsApp" onclick="openChatwootConversation()">📱</button>
+          <span id="cw-header-badge" class="cw-header-badge hidden" title="Chatwoot conectado">💬</span>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div id="page-content" class="page-content">
+        <!-- Content rendered dynamically by app.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Patient Detail Modal -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="chatwoot-bridge.js"></script>
+  <script src="chatwoot-api.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
