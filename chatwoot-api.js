@@ -32,7 +32,8 @@ const ChatwootAPI = (() => {
     function apiUrl(path) {
         const c = getConfig();
         if (!c) throw new Error('Chatwoot not configured');
-        return `${c.baseUrl}/api/v1/accounts/${c.accountId}${path}`;
+        // Use local proxy to avoid CORS
+        return `/chatwoot-api/api/v1/accounts/${c.accountId}${path}`;
     }
 
     function headers() {
@@ -114,7 +115,8 @@ const ChatwootAPI = (() => {
         try {
             const c = getConfig();
             if (!c) return { ok: false, error: 'Não configurado' };
-            const resp = await fetch(`${c.baseUrl}/api/v1/profile`, {
+            // Use local proxy to avoid CORS
+            const resp = await fetch(`/chatwoot-api/api/v1/profile`, {
                 headers: { 'api_access_token': c.apiToken }
             });
             if (resp.ok) {
